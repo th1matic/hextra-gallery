@@ -539,13 +539,18 @@ document.addEventListener('DOMContentLoaded', function () {
       copyText.textContent = '已复制!';
       
       // Show toast notification on card
-      showToast('图片复制成功！', 'success', 3000, cardElement);
+      showToast('图片复制成功！', 'success', 1000, cardElement);
       
-      // Reset after 2 seconds
+      // Reset after 1 second
       setTimeout(() => {
         cardElement.classList.remove('copied');
         copyText.textContent = originalText;
-      }, 2000);
+        // Reset hover indicator opacity
+        const indicator = cardElement.querySelector('.hextra-easy-image-copy-indicator');
+        if (indicator) {
+          indicator.style.opacity = '0';
+        }
+      }, 1000);
       
     } catch (err) {
       console.error('Failed to copy image: ', err);
@@ -568,20 +573,25 @@ document.addEventListener('DOMContentLoaded', function () {
           console.log('💡 To copy the actual image: Right-click → "Copy image"');
           
           // Show toast notification for link copy
-          showToast('图片链接复制成功！', 'info', 3000, cardElement);
+          showToast('图片链接复制成功！', 'info', 1000, cardElement);
           
           // Show a temporary tooltip or guidance
           showCopyGuidance(cardElement);
         } else {
           copyText.textContent = '已复制链接!';
           // Show toast notification for link copy
-          showToast('图片链接复制成功！', 'info', 3000, cardElement);
+          showToast('图片链接复制成功！', 'info', 1000, cardElement);
         }
         
         setTimeout(() => {
           cardElement.classList.remove('copied');
           copyText.textContent = originalText;
-        }, 2000);
+          // Reset hover indicator opacity
+          const indicator = cardElement.querySelector('.hextra-easy-image-copy-indicator');
+          if (indicator) {
+            indicator.style.opacity = '0';
+          }
+        }, 1000);
       } catch (fallbackErr) {
         console.error('Failed to copy image URL: ', fallbackErr);
         cardElement.classList.remove('copied');
@@ -589,11 +599,16 @@ document.addEventListener('DOMContentLoaded', function () {
         copyText.textContent = '复制失败';
         
         // Show error toast notification
-        showToast('复制失败，请重试', 'error', 3000, cardElement);
+        showToast('复制失败，请重试', 'error', 1000, cardElement);
         
         setTimeout(() => {
           copyText.textContent = '点击复制';
-        }, 2000);
+          // Reset hover indicator opacity
+          const indicator = cardElement.querySelector('.hextra-easy-image-copy-indicator');
+          if (indicator) {
+            indicator.style.opacity = '0';
+          }
+        }, 1000);
       }
     }
   };

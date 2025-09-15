@@ -10,6 +10,11 @@
   align-items: flex-start;
 }
 
+/* 超小尺寸容器特殊设置 */
+.hextra-easy-image-cards.hextra-easy-image-cards-xsmall {
+  @apply hx:gap-3; /* 减小间距以适应更多图片 */
+}
+
 /* 基础样式 */
 .hextra-easy-image-cards .hextra-easy-image-card {
   /* 移除 flex 容器样式，让图片决定高度 */
@@ -21,19 +26,62 @@
   @apply hx:min-w-[120px] hx:max-w-[200px];
 }
 
+/* 超小尺寸 - 每行5张图片 */
+.hextra-easy-image-cards.hextra-easy-image-cards-xsmall .hextra-easy-image-card {
+  /* 桌面端：每行5张图片 */
+  @apply hx:flex-1 hx:basis-0 hx:min-w-0;
+  flex: 1 1 calc(20% - 0.8rem) !important;
+  max-width: calc(20% - 0.8rem) !important;
+  min-width: 150px !important;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .hextra-easy-image-cards.hextra-easy-image-cards-xsmall .hextra-easy-image-card {
+    /* 平板端：每行4张图片 */
+    flex: 1 1 calc(25% - 0.75rem);
+    max-width: calc(25% - 0.75rem);
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hextra-easy-image-cards.hextra-easy-image-cards-xsmall .hextra-easy-image-card {
+    /* 手机端：每行3张图片 */
+    flex: 1 1 calc(33.333% - 0.667rem);
+    max-width: calc(33.333% - 0.667rem);
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hextra-easy-image-cards.hextra-easy-image-cards-xsmall .hextra-easy-image-card {
+    /* 小手机端：每行2张图片 */
+    flex: 1 1 calc(50% - 0.5rem);
+    max-width: calc(50% - 0.5rem);
+    min-width: 120px;
+  }
+}
+
 /* 小尺寸 - 使用更高的优先级 */
 .hextra-easy-image-cards.hextra-easy-image-cards-small .hextra-easy-image-card {
-  @apply hx:min-w-[100px] hx:max-w-[150px] !important;
+  @apply hx:min-w-[100px] hx:max-w-[150px];
+  min-width: 100px !important;
+  max-width: 150px !important;
 }
 
 /* 中等尺寸 */
 .hextra-easy-image-cards.hextra-easy-image-cards-medium .hextra-easy-image-card {
-  @apply hx:min-w-[120px] hx:max-w-[200px] !important;
+  @apply hx:min-w-[120px] hx:max-w-[200px];
+  min-width: 120px !important;
+  max-width: 200px !important;
 }
 
 /* 大尺寸 */
 .hextra-easy-image-cards.hextra-easy-image-cards-large .hextra-easy-image-card {
-  @apply hx:min-w-[200px] hx:max-w-[300px] !important;
+  @apply hx:min-w-[200px] hx:max-w-[300px];
+  min-width: 200px !important;
+  max-width: 300px !important;
 }
 
 .hextra-card {
