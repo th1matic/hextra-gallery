@@ -322,9 +322,9 @@
             }
 
             function loadRandomImages() {
-              // Get random 40 images (or all if less than 40)
+              // Get random 20 images (or all if less than 20)
               const shuffledImages = shuffleArray(allImages);
-              const selectedImages = shuffledImages.slice(0, Math.min(40, shuffledImages.length));
+              const selectedImages = shuffledImages.slice(0, Math.min(20, shuffledImages.length));
               displayImages(selectedImages);
             }
 
